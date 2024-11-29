@@ -262,13 +262,14 @@ img + p {
     font-size: 10px;
 }
 #player-image {
-    background: url('')    no-repeat center center/cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     width: 80%;
     height: 46%;
 }
 .playerName { 
-    font-weight:bold;
-    font-size: 15px;
+    font-size: 12px;
     padding-bottom: 2px;
 }
 .rp {
@@ -303,10 +304,12 @@ img + p {
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    max-width:90px;
 }
 
 .gl {
     align-self: center;
+    
 }
 
 .add-player {
@@ -344,13 +347,19 @@ img + p {
         min-height: 150px ;
     }
     #player-image {
-        width:55%;
+        width:55%;   
     }
     .statics div p:first-child {
         font-size: 4px;
     }
     .statics div p:last-child {
         font-size: 6px;
+    }
+
+    .playerName {
+        font-size: 8px;
+        padding-bottom: 1px;
+        text-overflow: clip;
     }
     
 
@@ -370,9 +379,6 @@ img + p {
     }
     .rating {
         font-size: 8px;
-    }
-    .playerName {
-        font-size: 10px;
     }
     .flag {
        width: 10px;
