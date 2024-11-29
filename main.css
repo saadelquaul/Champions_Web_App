@@ -7,19 +7,16 @@ body {
     background-image: url('/imgs/field_background/section_background.jpeg');
     background-size:cover;
     background-position: top;
-    height: 100vh;
     background-repeat: no-repeat;
 }
-.burger-menu {
-    display:none;
-    
-}
+
 .nav-bar {
-    background-color:#cdedc9;
+    background-color:rgb(9, 4, 39);
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding:5px 1.875rem 5px 1.875rem;
+    
 }
 .nav-menu {
     display: flex;
@@ -27,19 +24,19 @@ body {
 }
 .nav-bar ul {
     display: flex;
-    width: 300px;
     list-style: none;
+    column-gap: 30px;
     justify-content: space-between;
     align-items: center;
-    
 }
 .menu button {
     border-style: none;
     background-color: transparent;
     cursor: pointer;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Cruyff-Bold, sans-serif;
     font-weight: bold;
     font-size: medium;
+    color:white;
 
 }
 .menu button:hover {
@@ -47,7 +44,6 @@ body {
     border-bottom: solid 3px green;
     
 }
-
 
 .nav-bar img {
     width: 4.375rem;
@@ -76,11 +72,265 @@ body {
 }
 .menu {
     display:flex;
-    /* flex-direction: column;
-    float: right; */
 }
 
-@media screen and (max-width:600px) {
+.top-background {
+    background-color:transparent;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    
+}
+ .squad-info-container {
+     display: flex;
+     justify-content: space-between;
+     margin: 0 3%;
+ }
+
+ .mid-background {
+     width: 62%;
+     background: url('/imgs/field_background/stadium_background.webp') no-repeat center center/cover;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     color: white;
+ }
+
+ .players-selection {
+     width: 35%;
+     background-color: rgba(255, 255, 255, 0.9);
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+ }
+
+ .players-selection h2 {
+     color: #333;
+     margin-bottom: 15px;
+ }
+
+ .search-sort-container {
+     display: flex;
+     justify-content: space-between;
+     margin-bottom: 15px;
+ }
+
+ .search-input, .sort-select {
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+ }
+
+ .search-input {
+     width: 60%;
+ }
+
+ .sort-select {
+     width: 35%;
+ }
+
+ .players-list {
+     max-height: 500px;
+     overflow-y: auto;
+ }
+
+ .player-item {
+     display: flex;
+     align-items: center;
+     background-color: #f0f0f0;
+     margin-bottom: 10px;
+     padding: 10px;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ .player-item:hover {
+     background-color: #e0e0e0;
+ }
+
+ .player-image {
+     width: 50px;
+     height: 50px;
+     object-fit: cover;
+     border-radius: 50%;
+     margin-right: 10px;
+ }
+
+ .player-flag {
+     width: 20px;
+     height: 15px;
+     object-fit: cover;
+     margin-right: 10px;
+ }
+
+
+ @media screen and (max-width: 1050px) {
+     .squad-info-container {
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .mid-background, .player-selection {
+         width: 90%;
+         margin-bottom: 20px;
+     }
+ }
+
+.creat-squad-info {
+    width: 300px;
+}
+.mid-background button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.player-card-container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.default-placeholder {
+    background: url('imgs/field_background/cards-placeholder/placeholder-card-normal.jpg') no-repeat center center/cover;
+}
+.player-card {
+    background-color:transparent;
+    display: flex;
+    justify-content: center;
+    color:#423401;
+    font-weight: bold;
+    font-size: 12px;
+    z-index: 1;
+    min-width: 129px ;
+    min-height: 190px ;
+}
+.gold-placeholder {
+    background: url('/imgs/field_background/cards-placeholder/gold.png') no-repeat center center/cover;
+}
+.players {
+    display: flex;
+    place-self: center;
+    column-gap: 20px;
+}
+
+.player-card-container span {
+    background-color: rgb(63, 61, 61);
+    color: white;
+    border: 2px solid black;
+    width: 40px;
+    padding: 8px;
+    border-radius: 50%;
+}
+.top {
+    column-gap: 30%;
+    justify-content: center;
+}
+.mid {
+justify-content: center;
+column-gap: 25%;
+    }
+.cb {
+    margin-top: 60px;
+
+}
+.back {
+    column-gap: 10%;
+    justify-content: center;
+}
+
+.cm {
+    padding-top: 90px;
+}
+.statics {
+    display: flex;
+    gap: 3px;
+}
+.statics div p:first-child {
+    font-weight:lighter;
+    font-size: 7px;
+}
+.statics div p:last-child {
+    font-weight:bold;
+    font-size: 10px;
+}
+img + p {
+    font-size: 10px;
+}
+#player-image {
+    background: url('')    no-repeat center center/cover;
+    width: 80%;
+    height: 46%;
+}
+.playerName { 
+    font-weight:bold;
+    font-size: 15px;
+    padding-bottom: 2px;
+}
+.rp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    place-self: start;
+    font-weight:bold;
+    position: absolute;
+    z-index: 1;
+    gap: 1px;
+    top:12%;
+    left:11%;
+}
+.position {
+    font-size: 8px;
+}
+.flag {
+    background: url('') no-repeat center/cover;
+    width: 14px;
+    height: 16px ;
+}
+.club {
+    background: url('') no-repeat center/cover;
+    width: 14px;
+    height: 14px ;
+}
+.player-info {
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.gl {
+    align-self: center;
+}
+
+.add-player {
+    color:white;
+    font-size: x-large;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 4px 8px;
+}
+@media screen and (max-width: 1050px) {
+    .mid-background {
+        width: 90%; }
+        .squad-info-container {
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+        }
+        .players-selection {
+            width: 90%;
+        }
+        
+}
+
+@media screen and (max-width:750px) {
     .nav-bar {
         padding:5px 1.25rem 5px 1.25rem;
     }
@@ -89,5 +339,61 @@ body {
         font-size:small;
         
     }
+    .player-card {
+        min-width: 100px ;
+        min-height: 150px ;
+    }
+    #player-image {
+        width:55%;
+    }
+    .statics div p:first-child {
+        font-size: 4px;
+    }
+    .statics div p:last-child {
+        font-size: 6px;
+    }
+    
 
+}
+@media screen and (max-width:500px) {
+    
+    
+    .player-card {
+        min-width: 60px ;
+        min-height: 100px ;
+    }
+    .statics {
+        column-gap: 1px;
+        }
+    .position {
+        font-size: 6px;
+    }
+    .rating {
+        font-size: 8px;
+    }
+    .playerName {
+        font-size: 10px;
+    }
+    .flag {
+       width: 10px;
+        height: 12px ;
+    }
+    .club {
+        width: 10px;
+        height: 10px ;
+    }
+    .top-info {
+        font-size:small;
+    }
+
+}
+
+.top-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: gold ;
+    font-size: large;
+    font-family: sans-serif;
+    align-items: center;
 }
