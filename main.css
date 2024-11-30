@@ -115,7 +115,7 @@ body {
      margin-bottom: 15px;
  }
 
- .search-input, .sort-select {
+ .search-input, .sort-select,#formation {
      padding: 8px;
      border: 1px solid #ccc;
      border-radius: 4px;
@@ -402,4 +402,16 @@ img + p {
     font-size: large;
     font-family: sans-serif;
     align-items: center;
+}
+.formation {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-bottom: 10px;
+    min-width: 90px;
+    min-height: 30px;
+    border-radius: 5px;
+    color: rgb(244, 215, 51);
+    font-size: large;
+
 }
