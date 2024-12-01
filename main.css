@@ -4,7 +4,7 @@
     margin: 0;
 }
 body {
-    background-image: url('/imgs/field_background/section_background.jpeg');
+    background-image: url('imgs/field_background/section_background.jpeg');
     background-size:cover;
     background-position: top;
     background-repeat: no-repeat;
@@ -89,7 +89,7 @@ body {
 
  .mid-background {
      width: 62%;
-     background: url('/imgs/field_background/stadium_background.webp') no-repeat center center/cover;
+     background: url('imgs/field_background/stadium_background.webp') no-repeat center center/cover;
      padding: 20px;
      border-radius: 10px;
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -102,6 +102,8 @@ body {
      padding: 20px;
      border-radius: 10px;
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     max-height: 600px;
+     overflow-y: auto;
  }
 
  .players-selection h2 {
@@ -115,7 +117,7 @@ body {
      margin-bottom: 15px;
  }
 
- .search-input, .sort-select {
+ .search-input, .sort-select,#formation {
      padding: 8px;
      border: 1px solid #ccc;
      border-radius: 4px;
@@ -130,8 +132,8 @@ body {
  }
 
  .players-list {
-     max-height: 500px;
-     overflow-y: auto;
+     
+     
  }
 
  .player-item {
@@ -232,7 +234,7 @@ body {
 }
 .mid {
 justify-content: center;
-column-gap: 25%;
+column-gap: 10%;
     }
 .cb {
     margin-top: 60px;
@@ -262,13 +264,14 @@ img + p {
     font-size: 10px;
 }
 #player-image {
-    background: url('')    no-repeat center center/cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     width: 80%;
     height: 46%;
 }
 .playerName { 
-    font-weight:bold;
-    font-size: 15px;
+    font-size: 12px;
     padding-bottom: 2px;
 }
 .rp {
@@ -303,19 +306,28 @@ img + p {
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    max-width:90px;
 }
 
 .gl {
     align-self: center;
+    
 }
 
-.add-player {
+.add {
     color:white;
     font-size: x-large;
     border: 1px solid white;
     border-radius: 50%;
     padding: 4px 8px;
 }
+.addPlayer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    place-self: flex-center;
+}
+
 @media screen and (max-width: 1050px) {
     .mid-background {
         width: 90%; }
@@ -344,13 +356,19 @@ img + p {
         min-height: 150px ;
     }
     #player-image {
-        width:55%;
+        width:55%;   
     }
     .statics div p:first-child {
         font-size: 4px;
     }
     .statics div p:last-child {
         font-size: 6px;
+    }
+
+    .playerName {
+        font-size: 8px;
+        padding-bottom: 1px;
+        text-overflow: clip;
     }
     
 
@@ -370,9 +388,6 @@ img + p {
     }
     .rating {
         font-size: 8px;
-    }
-    .playerName {
-        font-size: 10px;
     }
     .flag {
        width: 10px;
@@ -396,4 +411,16 @@ img + p {
     font-size: large;
     font-family: sans-serif;
     align-items: center;
+}
+.formation {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-bottom: 10px;
+    min-width: 90px;
+    min-height: 30px;
+    border-radius: 5px;
+    color: rgb(244, 215, 51);
+    font-size: large;
+
 }
