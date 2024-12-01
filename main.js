@@ -1,6 +1,9 @@
 let players = [];
+let playersInSquadData = [];
+let playersCard = document.querySelectorAll('.player-card-container');
+console.log(playersCard);
 
-fetch('./srcs/players.json')
+fetch('./srcs/allPlayers.json')
     .then(response => response.json())
     .then(data => {
         players = data.players;
@@ -16,6 +19,7 @@ function displayPlayers(playersData) {
     playersData.forEach(player => {
         const playerItem = document.createElement('div');
         playerItem.classList.add('player-item');
+        playerItem.dataset.playerId = player.id;
 
         const playerImage = document.createElement('img');
         playerImage.src = player.photo || 'imgs/field_background/default-player.png';
@@ -35,76 +39,62 @@ function displayPlayers(playersData) {
         playerItem.appendChild(flagImage);
         playerItem.appendChild(playerInfo);
 
-        playerItem.addEventListener('click', () => addPlayerToSquad(player));
+        // playerItem.addEventListener('click', () => addPl    ayerToSquad(player));
 
         playerList.appendChild(playerItem);
     });
 }
 
-function addPlayerToSquad(player) {
-    const positionButtons = document.querySelectorAll('.player-card-container span');
-    let matchingButton = null;
+    function addPlayerToSquad(player,playerCard) {
+        if (player.position.toUpperCase() !== 'GK') {
+            playerCard.classList.remove('default-placeholder');
+            playerCard.classList.add('gold-placeholder');
+            playerCard.innerHTML = `
+                <div class="player-info">
+                    <div class="rp">
+                        <div class="rating">${player.rating}</div>
+                        <div class="position">${player.position}</div>
+                        <div class="flag" style="background-image: url('${player.flag}')"></div>
+                        <div class="club" style="background-image: url('${player.logo}')"></div>
+                    </div>
+                    <div id="player-image" style="background-image: url('${player.photo}')"></div>
+                    <p class="playerName">${player.name}</p>
+                    <div class="statics">
+                        <div><p>PAC</p><p>${player.stats.pace}</p></div>
+                        <div><p>SHO</p><p>${player.stats.shooting}</p></div>
+                        <div><p>PAS</p><p>${player.stats.passing}</p></div>
+                        <div><p>DRI</p><p>${player.stats.dribbling}</p></div>
+                        <div><p>DEF</p><p>${player.stats.defending}</p></div>
+                        <div><p>PHY</p><p>${player.stats.physical}</p></div>
+                    </div>
+                </div>
+            `;
+        }else if (player.position.toUpperCase() === 'GK') {
+            playerCard.classList.remove('default-placeholder');
+            playerCard.classList.add('gold-placeholder');
+            playerCard.innerHTML = `
+                <div class="player-info">
+                    <div class="rp">
+                        <div class="rating">${player.rating}</div>
+                        <div class="position">${player.position}</div>
+                        <div class="flag" style="background-image: url('${player.flag}')"></div>
+                        <div class="club" style="background-image: url('${player.logo}')"></div>
+                    </div>
+                    <div id="player-image" style="background-image: url('${player.photo}')"></div>
+                    <p class="playerName">${player.name}</p>
+                    <div class="statics">
+                        <div><p>DIV</p><p>${player.stats.diving}</p></div>
+                        <div><p>HAN</p><p>${player.stats.handling}</p></div>
+                        <div><p>KIC</p><p>${player.stats.kicking}</p></div>
+                        <div><p>REF</p><p>${player.stats.reflexes}</p></div>
+                        <div><p>SPD</p><p>${player.stats.speed}</p></div>
+                        <div><p>POS</p><p>${player.stats.positioning}</p></div>
+                    </div>
+                </div>
+            `;
 
-    for (let button of positionButtons) {
-        if (button.textContent.trim().toUpperCase() === player.position.toUpperCase()) {
-            matchingButton = button;
-            break;
         }
     }
-
-    if (matchingButton && player.position.toUpperCase() !== 'GK') {
-        const playerCard = matchingButton.closest('.player-card-container').querySelector('.player-card');
-        playerCard.classList.remove('default-placeholder');
-        playerCard.classList.add('gold-placeholder');
-        playerCard.innerHTML = `
-            <div class="player-info">
-                <div class="rp">
-                    <div class="rating">${player.rating}</div>
-                    <div class="position">${player.position}</div>
-                    <div class="flag" style="background-image: url('${player.flag}')"></div>
-                    <div class="club" style="background-image: url('${player.club}')"></div>
-                </div>
-                <div id="player-image" style="background-image: url('${player.photo}')"></div>
-                <p class="playerName">${player.name}</p>
-                <div class="statics">
-                    <div><p>PAC</p><p class="pac">${player.pace}</p></div>
-                    <div><p>SHO</p><p class="sho">${player.shooting}</p></div>
-                    <div><p>PAS</p><p class="pas">${player.passing}</p></div>
-                    <div><p>DRI</p><p class="dri">${player.dribbling}</p></div>
-                    <div><p>DEF</p><p class="def">${player.defending}</p></div>
-                    <div><p>PHY</p><p class="phy">${player.physical}</p></div>
-                </div>
-            </div>
-        `;
-    }else if (matchingButton && player.position.toUpperCase() === 'GK') {
-        const playerCard = matchingButton.closest('.player-card-container').querySelector('.player-card');
-        playerCard.classList.remove('default-placeholder');
-        playerCard.classList.add('gold-placeholder');
-        playerCard.innerHTML = `
-            <div class="player-info">
-                <div class="rp">
-                    <div class="rating">${player.rating}</div>
-                    <div class="position">${player.position}</div>
-                    <div class="flag" style="background-image: url('${player.flag}')"></div>
-                    <div class="club" style="background-image: url('${player.club}')"></div>
-                </div>
-                <div id="player-image" style="background-image: url('${player.photo}')"></div>
-                <p class="playerName">${player.name}</p>
-                <div class="statics">
-                    <div><p>PAC</p><p class="pac">${player.diving}</p></div>
-                    <div><p>SHO</p><p class="sho">${player.handling}</p></div>
-                    <div><p>PAS</p><p class="pas">${player.kicking}</p></div>
-                    <div><p>DRI</p><p class="dri">${player.reflexes}</p></div>
-                    <div><p>DEF</p><p class="def">${player.speed}</p></div>
-                    <div><p>PHY</p><p class="phy">${player.positioning}</p></div>
-                </div>
-            </div>
-        `;
-
-    } else {
-        alert('No matching position found in the squad!');
-    }
-}
 
 const searchInput = document.querySelector('.search-input');
 const sortSelect = document.querySelector('.sort-select');
@@ -135,3 +125,92 @@ function sortPlayers() {
     });
     displayPlayers(sortedPlayers);
 }
+
+const formationSelection =  document.getElementById('formation');
+
+formationSelection.addEventListener('change', updatePlayerCards);  
+
+function PlayerCardContainer(position, p="") {
+    return `<button class = "${p}">
+                    <div class="player-card-container">
+                        <div class="player-card default-placeholder">
+                            <div class="player-info">
+                                <p class="add">+</p>
+                            </div>
+                        </div>
+                        <span>${position}</span>
+                    </div>
+                </button>`
+}
+
+ function updatePlayerCards() {
+    const formation = formationSelection.value;
+   
+        if(formation === '433')
+        {
+            const topPlayers = document.querySelector('.top');
+            const midPlayers = document.querySelector('.mid');
+
+            topPlayers.innerHTML = `
+            ${PlayerCardContainer('LW')}
+            ${PlayerCardContainer('ST')}
+            ${PlayerCardContainer('RW')}
+             `;
+            midPlayers.innerHTML = `
+            ${PlayerCardContainer('CM')}
+            ${PlayerCardContainer('CM','cm')}
+            ${PlayerCardContainer('CM')}
+            `;
+
+        }
+        else if (formation === '442'){
+            const topPlayers = document.querySelector('.top');
+            const midPlayers = document.querySelector('.mid');
+
+            topPlayers.innerHTML = `
+            ${PlayerCardContainer('ST')}
+            ${PlayerCardContainer('ST')}
+             `;
+            midPlayers.innerHTML = `
+            ${PlayerCardContainer('LM')}
+            ${PlayerCardContainer('CM','cm')}
+            ${PlayerCardContainer('CM','cm')}
+            ${PlayerCardContainer('RM')}
+            `;
+        }
+        playersCard = document.querySelectorAll('.player-card-container');
+        
+        playersCard.forEach(playerCard => {
+            playerCard.addEventListener('click',addPlayerToField);});
+
+    
+}
+
+playersCard.forEach(playerCard => {
+    playerCard.addEventListener('click',addPlayerToField);});
+
+    function addPlayerToField() {
+        const playerPosition = this.querySelector('span').textContent;
+        console.log(playerPosition);
+        
+        const filteredPlayers = players.filter(player =>
+            player.position.toUpperCase().includes(playerPosition)
+        );
+        displayPlayers(filteredPlayers);
+        const playersItem = document.querySelectorAll('.player-item');
+        playersItem.forEach(playerItem => {
+            playerItem.addEventListener('click', () => {
+                filteredPlayers.forEach(player => {   
+                    if (player.id === +playerItem.getAttribute('data-player-id')) {
+                        addPlayerToSquad(player,this.querySelector('.player-card')); 
+                    }
+                });
+            });
+        });
+        
+    }
+
+
+
+
+
