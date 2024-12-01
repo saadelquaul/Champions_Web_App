@@ -545,6 +545,86 @@
         "speed": 50,
         "positioning": 85
       }
+    },{
+      "id": 27,
+      "name": "Ousmane Dembélé",
+      "photo": "https://cdn3.futbin.com/content/fifa24/img/players/231443.png?fm=png&ixlib=java-2.1.0&w=512&s=33000c1d592c45711a26492e895f98ae",
+      "large_pic": "https://i.pinimg.com/564x/c2/88/b2/c288b2a0067f070cbd8ec90aecb810d4.jpg",
+      "position": "LM",
+      "nationality": "France",
+      "flag": "https://www.fifaratings.com/wp-content/uploads/fr-1.svg",
+      "club": "Paris Saint-Germain",
+      "logo": "https://cdn.sofifa.net/meta/team/591/120.png",
+      "rating": 86,
+      "selected": false,
+      "stats": {
+        "pace": 92,
+        "shooting": 77,
+        "passing": 80,
+        "dribbling": 86,
+        "defending": 40,
+        "physical": 60
+      }
+    },{
+      "id": 28,
+      "name": "Bukayo Saka",
+      "photo": "https://cdn3.futbin.com/content/fifa24/img/players/246669.png?fm=png&ixlib=java-2.1.0&w=512&s=8937b83c5986642093ce59924103843a",
+      "large_pic": "https://i.pinimg.com/736x/36/5c/9d/365c9d0f47beefc5317135ae96de6d05.jpg",
+      "position": "LM",
+      "nationality": "England",
+      "flag": "https://www.fifaratings.com/wp-content/uploads/gb-eng-1.svg",
+      "club": "Arsenal",
+      "logo": "https://thumbs.dreamstime.com/b/england-football-club-emblem-transparent-background-vector-illustration-arsenal-fc-227686842.jpg",
+      "rating": 87,
+      "selected": false,
+      "stats": {
+        "pace": 86,
+        "shooting": 82,
+        "passing": 80,
+        "dribbling": 86,
+        "defending": 59,
+        "physical": 72
+      }
+    },{
+      "id": 29,
+      "name": "Rodrygo",
+      "photo": "https://cdn3.futbin.com/content/fifa24/img/players/243812.png?fm=png&ixlib=java-2.1.0&w=512&s=6f0aed5fcb6968b7e44d44b49bf9b28a",
+      "large_pic": "https://i.pinimg.com/736x/fa/c6/a4/fac6a49d2184fa0e3e6cabe18fea131d.jpg",
+      "position": "RM",
+      "nationality": "Brazil",
+      "flag": "https://cdn.sofifa.net/flags/br.png",
+      "club": "Real Madrid",
+      "logo": "https://cdn.sofifa.net/meta/team/3468/120.png",
+      "rating": 86,
+      "selected": false,
+      "stats": {
+        "pace": 89,
+        "shooting": 79,
+        "passing": 78,
+        "dribbling": 88,
+        "defending": 35,
+        "physical": 68
+      }
+    },{
+      "id": 30,
+      "name": "Nico Williams",
+      "photo": "https://cdn3.futbin.com/content/fifa24/img/players/256516.png?fm=png&ixlib=java-2.1.0&w=512&s=d18a6dd61db33e25061ce54e4e6f365f",
+      "large_pic": "https://tmssl.akamaized.net//images/foto/galerie/gianluigi-donnarumma-italien-1605027427-51025.jpg?lm=1605027436",
+      "position": "RM",
+      "nationality": "Spain",
+      "flag": "https://www.fifaratings.com/wp-content/uploads/es-1.svg",
+      "club": "Athletic Club",
+      "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/3/34/Logo_Athletic_Club_Bilbao.svg/1200px-Logo_Athletic_Club_Bilbao.svg.png",
+      "rating": 85,
+      "selected": false,
+      "stats": {
+        "pace": 94,
+        "shooting": 72,
+        "passing": 76,
+        "dribbling": 84,
+        "defending": 39,
+        "physical": 68
+      }
     }
   ]
 }

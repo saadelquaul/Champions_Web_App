@@ -1,7 +1,7 @@
 let players = [];
 let playersInSquadData = [];
 let playersCard = document.querySelectorAll('.player-card-container');
-console.log(playersCard);
+
 
 fetch('./srcs/allPlayers.json')
     .then(response => response.json())
@@ -194,15 +194,16 @@ playersCard.forEach(playerCard => {
         console.log(playerPosition);
         
         const filteredPlayers = players.filter(player =>
-            player.position.toUpperCase().includes(playerPosition)
+            player.position.toUpperCase().includes(playerPosition) && player.selected === false
         );
         displayPlayers(filteredPlayers);
         const playersItem = document.querySelectorAll('.player-item');
         playersItem.forEach(playerItem => {
             playerItem.addEventListener('click', () => {
                 filteredPlayers.forEach(player => {   
-                    if (player.id === +playerItem.getAttribute('data-player-id')) {
-                        addPlayerToSquad(player,this.querySelector('.player-card')); 
+                    if (player.id === +playerItem.getAttribute('data-player-id') && player.selected === false) {
+                        addPlayerToSquad(player,this.querySelector('.player-card'));
+                        player.selected = true;
                     }
                 });
             });
