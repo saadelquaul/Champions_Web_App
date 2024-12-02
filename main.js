@@ -39,8 +39,6 @@ function displayPlayers(playersData) {
         playerItem.appendChild(flagImage);
         playerItem.appendChild(playerInfo);
 
-        // playerItem.addEventListener('click', () => addPl    ayerToSquad(player));
-
         playerList.appendChild(playerItem);
     });
 }
@@ -179,8 +177,19 @@ function PlayerCardContainer(position, p="") {
             `;
         }
         playersCard = document.querySelectorAll('.player-card-container');
-        
+        for (let i = 0; i < playersInSquadData.length; i++) {
+            playersInSquadData[i].selected = false; }
+            
         playersCard.forEach(playerCard => {
+            for (let i = 0; i < playersInSquadData.length; i++) {
+                if(playersInSquadData[i].position === playerCard.querySelector('span').textContent && playersInSquadData[i].selected === false && !playerCard.querySelector('.player-card').classList.contains('not-Empty')  ){
+                    console.log('found');
+                playersInSquadData[i].selected = true;
+                console.log(playersInSquadData[i].position);
+                playerCard.querySelector('.player-card').classList.add('not-Empty');
+                addPlayerToSquad(playersInSquadData[i],playerCard.querySelector('.player-card'));
+                
+            }}
             playerCard.addEventListener('click',addPlayerToField);});
 
     
@@ -191,7 +200,6 @@ playersCard.forEach(playerCard => {
 
     function addPlayerToField() {
         const playerPosition = this.querySelector('span').textContent;
-        console.log(playerPosition);
         
         const filteredPlayers = players.filter(player =>
             player.position.toUpperCase().includes(playerPosition) && player.selected === false
@@ -202,8 +210,14 @@ playersCard.forEach(playerCard => {
             playerItem.addEventListener('click', () => {
                 filteredPlayers.forEach(player => {   
                     if (player.id === +playerItem.getAttribute('data-player-id') && player.selected === false) {
+                        if(this.querySelector('.player-card').classList.contains('not-Empty') && this.querySelector('.player-card').querySelector('.playerName').textContent !== player.name){
+                            players.forEach(player2 => { if(player2.name === this.querySelector('.player-card').querySelector('.playerName').textContent){player2.selected = false;playersInSquadData.pop(player2);}});
+                        }
                         addPlayerToSquad(player,this.querySelector('.player-card'));
                         player.selected = true;
+                        this.querySelector('.player-card').classList.add('not-Empty')
+                        displayPlayers(players.filter(player => player.selected === false))
+                        playersInSquadData.push(player);
                     }
                 });
             });
