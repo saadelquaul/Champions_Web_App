@@ -212,7 +212,7 @@ body {
     min-height: 190px ;
 }
 .gold-placeholder {
-    background: url('/imgs/field_background/cards-placeholder/gold.png') no-repeat center center/cover;
+    background: url('imgs/field_background/cards-placeholder/gold.png') no-repeat center center/cover;
 }
 .players {
     display: flex;
