@@ -110,6 +110,31 @@ body {
      color: #333;
      margin-bottom: 15px;
  }
+.button {
+    width: 170px;
+    height: 40px;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #34974d;
+    background-color: #3aa856;
+    color: #fff;
+    font-weight: 600;
+    transform: translateY(-6px);
+    border-radius: 10px 0 10px 0;
+    position: relative;
+  }
+  .button:hover {
+    background-color: #166832;
+    color: #fff;
+  }
+
+  .players-selection > div:first-child {
+    display: flex;
+    justify-content: space-between;
+
+  }
 
  .search-sort-container {
      display: flex;
@@ -117,12 +142,20 @@ body {
      margin-bottom: 15px;
  }
 
- .search-input, .sort-select,#formation {
+ .search-input, .sort-select {
      padding: 8px;
      border: 1px solid #ccc;
      border-radius: 4px;
  }
-
+ #formation {
+    min-width: 100px;
+    text-align: center;
+    border: 1px solid #ccc;
+     border-radius: 4px;
+     background-color: rgb(197, 169, 11);
+     font-size: 16px;
+     font-weight: bold;
+ }
  .search-input {
      width: 60%;
  }
@@ -131,10 +164,10 @@ body {
      width: 35%;
  }
 
- .players-list {
+ /* .players-list {
      
      
- }
+ } */
 
  .player-item {
      display: flex;
@@ -210,7 +243,9 @@ body {
     z-index: 1;
     min-width: 129px ;
     min-height: 190px ;
+    position: relative;
 }
+
 .gold-placeholder {
     background: url('imgs/field_background/cards-placeholder/gold.png') no-repeat center center/cover;
 }
@@ -228,6 +263,7 @@ body {
     padding: 8px;
     border-radius: 50%;
 }
+
 .top {
     column-gap: 30%;
     justify-content: center;
@@ -414,14 +450,15 @@ img + p {
 }
 .formation {
     display: flex;
-    flex-direction: column;
-    justify-self: center;
+    justify-self: start;
     margin-bottom: 10px;
-    min-width: 90px;
+    min-width: 300px;
     min-height: 30px;
     border-radius: 5px;
-    color: rgb(244, 215, 51);
+    color: gold;
     font-size: large;
+    font-weight: bold;
+    margin-left: 35%;
 
 }
 
@@ -430,5 +467,10 @@ img + p {
     flex-direction: column;
     position: absolute;
     width: 20px;
-    z-index: 1;
+    right: -18px;
+    top: 24px;
 }
+.E {
+    background-color:green ;
+}
+

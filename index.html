@@ -32,7 +32,7 @@
         </section>
         <section >
             <div class="formation">
-                <label for="formation">Formation:</label>
+                <label for="formation">Choose Formation:</label>
             <select  name="formation" id="formation">
                 <option value="433">4-3-3</option>
                 <option value="442">4-4-2</option>
@@ -41,7 +41,7 @@
 
         <div  class="squad-info-container">
             <div class="mid-background ">
-             <div class="top players">
+             <div class="top players" id="top">
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -52,6 +52,7 @@
                         <span>LW</span>
                     </div>
                 </button>
+                
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -62,6 +63,8 @@
                         <span>ST</span>
                     </div>
                 </button>
+                
+                
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -72,8 +75,10 @@
                         <span>RW</span>
                     </div>
                 </button>
+                
             </div>
-            <div class="mid players">
+            <div class="mid players" id="mid">
+
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -84,6 +89,7 @@
                         <span>CM</span>
                     </div>
                 </button>
+                
                 <button class="cm">
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -94,6 +100,8 @@
                         <span>CM</span>
                     </div>
                 </button>
+                
+                
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -104,8 +112,10 @@
                         <span>CM</span>
                     </div>
                 </button>
+            
             </div>
-            <div class="back players">
+            <div class="back players" id="back">
+                
                 <button>
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -116,6 +126,8 @@
                         <span>LB</span>
                     </div>
                 </button>
+            
+                
                 <button class="cb">
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -126,6 +138,8 @@
                         <span>CB</span>
                     </div>
                 </button>
+            
+            
                 <button class="cb">
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -136,6 +150,8 @@
                         <span>CB</span>
                     </div>
                 </button>
+                
+                
                 <button >
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
@@ -146,8 +162,10 @@
                         <span>RB</span>
                     </div>
                 </button>
+            
             </div>
-                <button class="players gl">
+            
+                <button class="players gl" id="gl">
                     <div class="player-card-container">
                         <div class="player-card default-placeholder">
                             <div class="player-info">
@@ -157,11 +175,18 @@
                         <span>GK</span>
                     </div>
                 </button>
-                
+            
             </div>
             <div class="creat-squad-info"></div>
-<div class="players-selection">
-    <h2>Players Selection</h2>
+<div class="players-selection" id="players-list">
+    <div>
+        <h2>Players Selection</h2>
+        <button type="button" class="button">
+            <span >Add a Player </span>
+            <span ><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
+          </button>
+    </div>
+   
     <div class="search-sort-container">
         <input type="text" class="search-input" placeholder="Search players...">
         <select class="sort-select">
@@ -171,7 +196,7 @@
             <option value="position">Position</option>
         </select>
     </div>
-    <div class="players-list">
+    <div class="players-list" >
     </div>
 </div>
 </div>

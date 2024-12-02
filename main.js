@@ -1,7 +1,7 @@
 let players = [];
 let playersInSquadData = [];
 let playersCard = document.querySelectorAll('.player-card-container');
-
+let deletePlayerFromSquad = document.querySelectorAll('.D');
 
 fetch('./srcs/allPlayers.json')
     .then(response => response.json())
@@ -38,7 +38,6 @@ function displayPlayers(playersData) {
         playerItem.appendChild(playerImage);
         playerItem.appendChild(flagImage);
         playerItem.appendChild(playerInfo);
-
         playerList.appendChild(playerItem);
     });
 }
@@ -48,6 +47,9 @@ function displayPlayers(playersData) {
             playerCard.classList.remove('default-placeholder');
             playerCard.classList.add('gold-placeholder');
             playerCard.innerHTML = `
+                <div class="EDI">
+                <button class="D"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+                </div>
                 <div class="player-info">
                     <div class="rp">
                         <div class="rating">${player.rating}</div>
@@ -92,6 +94,12 @@ function displayPlayers(playersData) {
             `;
 
         }
+        
+            playerCard.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'center'
+            });
+          
     }
 
 const searchInput = document.querySelector('.search-input');
@@ -109,9 +117,11 @@ function filterPlayers() {
     displayPlayers(filteredPlayers);
 }
 
+
 function sortPlayers() {
     const sortBy = sortSelect.value;
     const sortedPlayers = [...players].sort((a, b) => {
+
         if (sortBy === 'rating') {
             return b.rating - a.rating;
         } else if (sortBy === 'name') {
@@ -138,7 +148,7 @@ function PlayerCardContainer(position, p="") {
                         </div>
                         <span>${position}</span>
                     </div>
-                </button>`
+            </button>`
 }
 
  function updatePlayerCards() {
@@ -178,22 +188,48 @@ function PlayerCardContainer(position, p="") {
         }
         playersCard = document.querySelectorAll('.player-card-container');
         for (let i = 0; i < playersInSquadData.length; i++) {
-            playersInSquadData[i].selected = false; }
+            if(playersInSquadData[i].position !== 'CB' && playersInSquadData[i].position !== 'RB'
+                && playersInSquadData[i].position !== 'LB'
+                && playersInSquadData[i].position !== 'GK'){playersInSquadData[i].selected = false;
+            
+            }
+
+             }
             
         playersCard.forEach(playerCard => {
             for (let i = 0; i < playersInSquadData.length; i++) {
                 if(playersInSquadData[i].position === playerCard.querySelector('span').textContent && playersInSquadData[i].selected === false && !playerCard.querySelector('.player-card').classList.contains('not-Empty')  ){
-                    console.log('found');
                 playersInSquadData[i].selected = true;
-                console.log(playersInSquadData[i].position);
                 playerCard.querySelector('.player-card').classList.add('not-Empty');
                 addPlayerToSquad(playersInSquadData[i],playerCard.querySelector('.player-card'));
                 
             }}
             playerCard.addEventListener('click',addPlayerToField);});
 
+            deletePlayerFromSquad = document.querySelectorAll('.D');
+
+            
+            
+
+
     
 }
+
+deletePlayerFromSquad.forEach(deleteButton => {
+    deleteButton.addEventListener('click', ()=> {
+        console.log(deleteButton.parentNode.parentElement);
+    });
+});
+
+    // const playerToRemove = playersInSquadData.find(player => player.name === deleteButtton.parentNode.querySelector('.playerName').textContent);
+                    // if(playerToRemove){
+                    //     playerToRemove.selected = false;
+                    //     playersInSquadData.splice(playersInSquadData.indexOf(playerToRemove), 1);
+                    //     deleteButton.parentNode.querySelector('.player-card').classList.remove('not-empty');
+                    //     deleteButton.parentNode.querySelector('.player-card').remove();
+                    // }
+                    // displayPlayers(players.filter(player => player.selected === false));
+                    
 
 playersCard.forEach(playerCard => {
     playerCard.addEventListener('click',addPlayerToField);});
@@ -226,6 +262,11 @@ playersCard.forEach(playerCard => {
     }
 
 
-
+    playersCard.forEach(playerCard => {playerCard.addEventListener('click', () => {
+        document.querySelector('.players-selection').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      })});
 
 
