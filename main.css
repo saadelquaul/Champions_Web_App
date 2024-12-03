@@ -50,26 +50,7 @@ body {
     height: 4.375rem;
 
 }
-.sign-in {
-    border-color:green;
-    border-width: 3px;
-    border-style: solid;
-    color: rgb(8, 96, 8);
-    cursor: pointer;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bold;
-    font-size: medium;
-    height: 50px;
-    width: 70px;
-    border-radius: 5px;
-    background-color: transparent;
-    align-self: center;
-}
 
-.sign-in:hover {
-    background-color:   #48732A;
-    color: white;
-}
 .menu {
     display:flex;
 }
@@ -474,3 +455,58 @@ img + p {
     background-color:green ;
 }
 
+.form-container {
+    max-width: 600px;
+    background-color: #1C2426;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 10;
+    color:white;
+  }
+
+  .form-container h2 {
+    text-align: center;
+    color: gold;
+    margin-bottom: 20px;
+  }
+
+  .form-container label {
+    margin-bottom: 5px;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="number"],
+  .form-container select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #6ee048;
+    background-color: #2A3538;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover {
+        background-color: darkgreen;
+  }}    
+  .form-container [type="button"] {
+    background-color: red;
+    
+    &:hover {
+        background-color: darkred;
+  }
+
+  }
+.stats {
+    display: flex;
+    column-gap: 10px;
+}  
