@@ -1,7 +1,7 @@
 let players = [];
 let playersInSquadData = [];
 let playersCard = document.querySelectorAll('.player-card-container');
-
+let deletePlayerFromSquad = document.querySelectorAll('.D');
 
 fetch('./srcs/allPlayers.json')
     .then(response => response.json())
@@ -38,7 +38,6 @@ function displayPlayers(playersData) {
         playerItem.appendChild(playerImage);
         playerItem.appendChild(flagImage);
         playerItem.appendChild(playerInfo);
-
         playerList.appendChild(playerItem);
     });
 }
@@ -48,6 +47,7 @@ function displayPlayers(playersData) {
             playerCard.classList.remove('default-placeholder');
             playerCard.classList.add('gold-placeholder');
             playerCard.innerHTML = `
+            
                 <div class="player-info">
                     <div class="rp">
                         <div class="rating">${player.rating}</div>
@@ -92,6 +92,16 @@ function displayPlayers(playersData) {
             `;
 
         }
+        // const deleteButton = document.createElement('button');
+        deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="red"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>'
+        // deleteButton.classList.add('D');
+        playerCard.insertAdjacentElement('afterend',deleteButton)
+        
+            playerCard.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'center'
+            });
+          
     }
 
 const searchInput = document.querySelector('.search-input');
@@ -109,12 +119,18 @@ function filterPlayers() {
     displayPlayers(filteredPlayers);
 }
 
+
 function sortPlayers() {
+    let i =1;
     const sortBy = sortSelect.value;
     const sortedPlayers = [...players].sort((a, b) => {
+        
         if (sortBy === 'rating') {
+            console.log(true);
+            
             return b.rating - a.rating;
         } else if (sortBy === 'name') {
+            console.log(a.name.localeCompare(b.name));
             return a.name.localeCompare(b.name);
         } else if (sortBy === 'position') {
             return a.position.localeCompare(b.position);
@@ -138,7 +154,7 @@ function PlayerCardContainer(position, p="") {
                         </div>
                         <span>${position}</span>
                     </div>
-                </button>`
+            </button>`
 }
 
  function updatePlayerCards() {
@@ -178,22 +194,48 @@ function PlayerCardContainer(position, p="") {
         }
         playersCard = document.querySelectorAll('.player-card-container');
         for (let i = 0; i < playersInSquadData.length; i++) {
-            playersInSquadData[i].selected = false; }
+            if(playersInSquadData[i].position !== 'CB' && playersInSquadData[i].position !== 'RB'
+                && playersInSquadData[i].position !== 'LB'
+                && playersInSquadData[i].position !== 'GK'){playersInSquadData[i].selected = false;
+            
+            }
+
+             }
             
         playersCard.forEach(playerCard => {
             for (let i = 0; i < playersInSquadData.length; i++) {
                 if(playersInSquadData[i].position === playerCard.querySelector('span').textContent && playersInSquadData[i].selected === false && !playerCard.querySelector('.player-card').classList.contains('not-Empty')  ){
-                    console.log('found');
                 playersInSquadData[i].selected = true;
-                console.log(playersInSquadData[i].position);
                 playerCard.querySelector('.player-card').classList.add('not-Empty');
                 addPlayerToSquad(playersInSquadData[i],playerCard.querySelector('.player-card'));
                 
             }}
             playerCard.addEventListener('click',addPlayerToField);});
 
+            deletePlayerFromSquad = document.querySelectorAll('.D');
+
+            
+            
+
+
     
 }
+
+deletePlayerFromSquad.forEach(deleteButton => {
+    deleteButton.addEventListener('click', ()=> {
+        console.log(1);
+    });
+});
+
+    const playerToRemove = playersInSquadData.find(player => player.name === deleteButtton.parentNode.querySelector('.playerName').textContent);
+                    if(playerToRemove){
+                        playerToRemove.selected = false;
+                        playersInSquadData.splice(playersInSquadData.indexOf(playerToRemove), 1);
+                        deleteButton.parentNode.querySelector('.player-card').classList.remove('not-empty');
+                        deleteButton.parentNode.querySelector('.player-card').remove();
+                    }
+                    displayPlayers(players.filter(player => player.selected === false));
+                    
 
 playersCard.forEach(playerCard => {
     playerCard.addEventListener('click',addPlayerToField);});
@@ -226,6 +268,135 @@ playersCard.forEach(playerCard => {
     }
 
 
+    playersCard.forEach(playerCard => {playerCard.addEventListener('click', () => {
+        document.querySelector('.players-selection').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      })});
 
+      const form = document.querySelector('form');
+      const addPlayerButton = document.querySelector('.button');
+      const position = document.getElementById('position');
+      const stats = document.querySelector('.stats');
+      
+      position.onchange = () => { if (position.value!=='GK'){
+        stats.innerHTML = `
+        <div>              
+    <label for="pac">PAC:</label>
+    <input type="number" id="pac" name="pac" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="sho">SHO:</label>
+    <input type="number" id="sho" name="sho" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="pas">PAS:</label>
+    <input type="number" id="pas" name="pas" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="dri">DRI:</label>
+    <input type="number" id="dri" name="dri" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="def">DEF:</label>
+    <input type="number" id="def" name="def" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="phy">PHY:</label>
+    <input type="number" id="phy" name="phy" min="0" max="99" required>
+    </div>`;
 
+      }else {
+        stats.innerHTML = `  <div>              
+    <label for="div">DIV:</label>
+    <input type="number" id="div" name="div" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="han">HAN:</label>
+    <input type="number" id="han" name="han" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="kic">KIC:</label>
+    <input type="number" id="kic" name="kic" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="ref">REF:</label>
+    <input type="number" id="ref" name="ref" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="spe">SPE:</label>
+    <input type="number" id="spe" name="spe" min="0" max="99" required>
+    </div>
+    <div> 
+    <label for="pos">POS:</label>
+    <input type="number" id="pos" name="pos" min="0" max="99" required>
+    </div>`;
+      }}
+      addPlayerButton.addEventListener('click', () => {
+        document.querySelector('.formation').parentElement.style.display = 'none';
+        document.querySelector('.form-container').style.display = 'block';
+      });
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+  
+        const name = document.getElementById('name').value;
+        // const photo = document.getElementById('photo').value;
+        
+        const nationality = document.getElementById('nationality').value;
+        const club = document.getElementById('club').value;
+        const rating = document.getElementById('rating').value;
+        if(position.value !== 'GK'){
+            const player = {
+                id:players.length+1,
+                name:name,
+                photo:'imgs/field_background/default-player.png',
+                position:position.value,
+                nationality:nationality,
+                flag: "https://cdn.sofifa.net/flags/ma.png",
+                club:club,
+                rating:rating,
+                selected: false,
+                stats: {
+                  pace: document.getElementById('pac').value,
+                  shooting: document.getElementById('sho').value,
+                  passing: document.getElementById('pas').value,
+                  dribbling: document.getElementById('dri').value,
+                  defending: document.getElementById('def').value,
+                  physical: document.getElementById('phy').value
+                }
+              };
+              players.push(player);
+        }else {
+            const player = {
+                id: players.length+1,
+                name:name,
+                photo:'imgs/field_background/default-player.png',
+                position:position.value,
+                nationality:nationality,
+                flag: "https://cdn.sofifa.net/flags/ma.png",
+                club:club,
+                rating :rating,
+                selected: false,
+                stats: {
+                  diving: document.getElementById('div').value,
+                  handling: document.getElementById('han').value,
+                  kicking: document.getElementById('kic').value,
+                  reflexes: document.getElementById('ref').value,
+                  speed: document.getElementById('spe').value,
+                  positioning: document.getElementById('pos').value
+                }
+              };
+              players.push(player);
+        } 
+        
+        
+        
+        form.reset();
+        closeForm();
+      });
 
+      function closeForm(){
+        document.querySelector('.form-container').style.display = 'none';
+        document.querySelector('.formation').parentElement.style.display = 'block';
+      }
